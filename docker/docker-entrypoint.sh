@@ -23,19 +23,18 @@ fi
 echo -e "\n ================ \n ${Info} ${GreenBG} 拉取 Miao-Yunzai 更新 ${Font} \n ================ \n"
 
 cd $WORK_DIR
-
+git remote add chomoe https://github.com/meng-fucius/Miao-Yunzai.git
 if [[ -z $(git status -s) ]]; then
     echo -e " ${Warn} ${YellowBG} 当前工作区有修改，尝试暂存后更新。${Font}"
-    git add .
-    git stash
-    git pull origin master --allow-unrelated-histories --rebase
+    git checkout .
+    git pull chomoe docker-sh --allow-unrelated-histories --rebase
     git stash pop
 else
-    git pull origin master --allow-unrelated-histories
+    git pull chomoe docker-sh --allow-unrelated-histories
 fi
 
 if [[ ! -f "$HOME/.ovo/yunzai.ok" ]]; then
-    set -e
+    set -et
     echo -e "\n ================ \n ${Info} ${GreenBG} 更新 Miao-Yunzai 运行依赖 ${Font} \n ================ \n"
     pnpm install -P
     touch ~/.ovo/yunzai.ok
