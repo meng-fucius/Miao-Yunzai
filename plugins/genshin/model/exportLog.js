@@ -218,17 +218,22 @@ export default class ExportLog extends base {
 
   /** xlsx导入抽卡记录 */
   async logXlsx () {
+    this.e.reply('111初始化')
     await this.initXlsx()
-
+    this.e.reply('111初始化完成')
     let uid = /[1-9][0-9]{8}/g.exec(this.e.file.name)[0]
     let textPath = `${this.path}${this.e.file.name}`
+    this.e.reply('111路径：'+textPath)
     /** 获取文件下载链接 */
     let fileUrl = await this.e.friend.getFileUrl(this.e.file.fid)
-
+    this.e.reply('111文件下载链接'+fileUrl)
     let ret = await common.downFile(fileUrl, textPath)
+    this.e.reply('下载文件'+ret)
     if (!ret) {
       this.e.reply('下载xlsx文件错误')
       return false
+    }else {
+      this.e.reply('下载xlsx文件成功')
     }
 
     let list = xlsx.parse(textPath)
