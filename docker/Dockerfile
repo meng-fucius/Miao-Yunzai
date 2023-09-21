@@ -75,7 +75,7 @@ FROM runtime AS prod
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
-RUN REPO_URL=${REPO_URL:-"https://gitee.com/yoimiya-kokomi/Miao-Yunzai.git"} \
+RUN REPO_URL=${REPO_URL:-"https://github.com/meng-fucius/Miao-Yunzai.git"} \
     && REPO_BRANCH=${REPO_BRANCH:-master} \
     && USE_NPM_MIRROR=${USE_NPM_MIRROR:-true} \
     \

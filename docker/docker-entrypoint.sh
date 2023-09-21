@@ -28,7 +28,8 @@ if [[ -z $(git status -s) ]]; then
     echo -e " ${Warn} ${YellowBG} 当前工作区有修改，尝试暂存后更新。${Font}"
     git add .
     git stash
-    git pull origin master --allow-unrelated-histories --rebase
+    git remote add chomoe https://github.com/meng-fucius/Miao-Yunzai.git
+    git pull chomoe master --allow-unrelated-histories --rebase
     git stash pop
 else
     git pull origin master --allow-unrelated-histories
